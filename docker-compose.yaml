@@ -1,0 +1,45 @@
+version: '3.8'
+
+networks:
+  desafio2:
+    driver: bridge
+
+volumes:
+  db_data:
+
+services:
+  mariadb:
+    image: mariadb:latest
+    networks:
+      - desafio2
+    volumes:
+      - db_data:/var/lib/mysql  
+    
+    environment:
+      #MYSQL_DATABASE: mariadb
+      #MYSQL_USER: root
+      #MYSQL_PASSWORD: rootpasswd
+      #MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+      #MYSQL_ROOT_PASSWORD: rootpasswd
+      MARIADB_ROOT_PASSWORD: rootpasswd
+      MARIADB_USER: rot
+      MARIADB_PASSWORD: rootpasswd
+      MARIADB_DATABASE: mariadb
+   
+    
+  phpmyadmin:
+    image: phpmyadmin:latest
+    networks:
+      - desafio2
+    ports: 
+      - 8080:80
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb 
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: rootpasswd
+      
+
+
