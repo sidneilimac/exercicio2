@@ -16,11 +16,6 @@ services:
       - db_data:/var/lib/mysql  
     
     environment:
-      #MYSQL_DATABASE: mariadb
-      #MYSQL_USER: root
-      #MYSQL_PASSWORD: rootpasswd
-      #MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
-      #MYSQL_ROOT_PASSWORD: rootpasswd
       MARIADB_ROOT_PASSWORD: rootpasswd
       MARIADB_USER: rot
       MARIADB_PASSWORD: rootpasswd
